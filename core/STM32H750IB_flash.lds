@@ -22,14 +22,14 @@ _estack = 0x20020000;
 
 SECTIONS
 {
-	.isr_vector :
+	.isr_vector (READONLY) :
 	{
 		. = ALIGN(4);
 		KEEP(*(.isr_vector))
 		. = ALIGN(4);
 	} > FLASH
 
-	.text :
+	.text (READONLY) :
 	{
 		. = ALIGN(4);
 		_stext = .;
@@ -47,7 +47,7 @@ SECTIONS
 
 	} > FLASH
 
-	.ARM.extab :
+	.ARM.extab (READONLY) :
 	{
 		. = ALIGN(4);
 		*(.ARM.extab)
@@ -55,7 +55,7 @@ SECTIONS
 		. = ALIGN(4);
 	} > FLASH
 
-	.exidx :
+	.exidx (READONLY) :
 	{
 		. = ALIGN(4);
 		PROVIDE(__exidx_start = .);
@@ -64,19 +64,19 @@ SECTIONS
 		PROVIDE(__exidx_end = .);
 	} > FLASH
 
-	.ARM.attributes :
+	.ARM.attributes (READONLY) :
 	{
 		*(.ARM.attributes)
 	} > FLASH
 
-	.preinit_array :
+	.preinit_array (READONLY) :
 	{
 		PROVIDE(__preinit_array_start = .);
 		KEEP(*(.preinit_array*))
 		PROVIDE(__preinit_array_end = .);
 	} > FLASH
 
-	.init_array :
+	.init_array (READONLY) :
 	{
 		PROVIDE(__init_array_start = .);
 		KEEP(*(SORT(.init_array.*)))
@@ -84,7 +84,7 @@ SECTIONS
 		PROVIDE(__init_array_end = .);
 	} > FLASH
 
-	.fini_array :
+	.fini_array (READONLY) :
 	{
 		PROVIDE(__fini_array_start = .);
 		KEEP(*(.fini_array*))
