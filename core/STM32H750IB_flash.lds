@@ -29,7 +29,7 @@ SECTIONS
 		. = ALIGN(4);
 	} > FLASH
 
-	.text (READONLY) :
+	.text ALIGN(4) (READONLY) :
 	{
 		. = ALIGN(4);
 		_stext = .;
